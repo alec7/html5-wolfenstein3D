@@ -14,6 +14,17 @@
     <script src="js/modernizr.custom.js"></script>
     <script src="js/jquery-1.7.1.min.js"></script>
     <script src="js/load.js"></script>
+    <script>
+      window.addEventListener('message', function(ev) {
+        if ( ev.data === 'pause' ) {
+          Wolf.Game.pause(true);
+          this.blur();
+        } else if ( ev.data === 'resume' ) {
+          Wolf.Game.pause(false);
+          this.focus();
+        }
+      }, false);
+    </script>
 
 </head>
 <body>

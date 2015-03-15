@@ -1308,7 +1308,17 @@ Wolf.Game = (function() {
         bindControl : bindControl,
         resume : resume,
         victory : victory,
-        endEpisode : endEpisode
+        endEpisode : endEpisode,
+        pause : function(p) {
+          paused = (p === true);
+          if (paused) {
+              Wolf.Sound.pauseMusic(true);
+          } else {
+              Wolf.Sound.pauseMusic(false);
+              lastTimeCount = (new Date).getTime();
+          }
+          $("#game .renderer div.pause.overlay").toggle(paused);
+        }
         
         /*
         dump : dump,
